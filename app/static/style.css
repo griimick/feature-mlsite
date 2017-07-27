@@ -1,0 +1,119 @@
+body {
+    font-family: Helvetica, sans-serif;
+}
+
+.hide {
+    display: none;
+}
+
+
+/* index/home.html */
+
+.front-page {
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.legend {
+    text-align: center;
+    margin-top: 50px;
+
+}
+
+/* projects/line.html */
+
+.result-list {
+    list-style: none;
+    padding: 10px 20px 20px 0px;
+}
+
+.aggregate-list {
+    margin-left: 50px;
+    width: 50%;
+    padding-top: 10px;
+    margin-right: 50px;
+}
+
+.overall {
+    text-align: center;
+}
+
+.results {
+    display: inline-flex;
+    padding-top: 40px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* projects/doc.html */
+
+h4 {
+    text-align: center;
+}
+
+input[type=submit] {
+    background-color: palegreen;
+    border: 2px palegreen solid;
+}
+
+.text-list {
+    margin-top: 50px;
+    margin-left: 2%;
+}
+
+.text-list h5 {
+    padding-left: 2%;
+}
+
+.neg {
+    color: #f05b4f;
+}
+
+.neu {
+    color: dodgerblue;
+}
+
+.pos {
+    color: #59922b;
+}
+
+/* projects/twitter.html */
+
+.text-form {
+    text-align: center;
+}
+
+
+/* */
+#predict {
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+    background-color: palegreen;
+    border: 2px solid palegreen;
+    text-decoration: none;
+}
+
+#heading {
+    margin-top: 50px;
+    text-align: center;
+}
+
+
+form {
+    text-align: center;
+}
+
+
+input[type=file] {
+    margin: auto;
+    padding: 20px;
+}
+
+#mynetwork {
+    width: 1200px;
+    height: 400px;
+    border: 1px solid lightgray;
+}
