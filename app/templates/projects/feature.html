@@ -63,7 +63,7 @@
                 {% for (a,b) in data[9] %}
                     {% for (x,y) in data[3] %}
                         {% if(b==x) %}
-                    <li>{{data[4][y-1][1]}} --- {{data[4][a-1][1]}} --- {{data[4][x-1][1]}} ({{data[7][data[4][x-1][1]][1]*data[7][data[4][a-1][1]]}},{{data[7][data[4][x-1][1]][0]*[data[4][a-1][1]]}})</li>
+                    <li>{{data[4][y-1][1]}} --- {{data[4][a-1][1]}} --- {{data[4][x-1][1]}} ({{data[7][data[4][x-1][1]][1]}},{{data[7][data[4][x-1][1]][0]}})</li>
                         {% endif %}
                     {% endfor %}
                 {% endfor %}
