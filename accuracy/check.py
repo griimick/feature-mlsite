@@ -6,7 +6,7 @@ root = xml.etree.ElementTree.parse('dataset/dataset.xml').getroot()
 dataset = {}
 for child in root:
 	child_split = child.attrib['id'].split('_')
-	if(child_split[0]=='app'):
+	if(child_split[0]=='hea'):
 		sentence_number = child_split[1]
 		sentence_text = child[0].text
 		if(len(child)>1):

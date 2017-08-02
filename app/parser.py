@@ -38,8 +38,8 @@ def parseText(query):
     os.chdir("app/static/hindi-dependency-parser-2.0")
     make_process = subprocess.Popen("make", shell=True,stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     out,err = make_process.communicate()
-    print(out)
-    print(err)
+    # print(out)
+    # print(err)
     # print("make file complete")
     make_process.wait() #wait for process to end
 
@@ -62,17 +62,39 @@ def parseText(query):
         parsedArray = line.split()
         if (len(parsedArray) >= 4):
             parsedOutput.append(parsedArray)
-            selfNodes.append(parsedArray[0])
-            linkNodes.append(parsedArray[4])
-            if (parsedArray[3] == "NN" or parsedArray[3] == "NNP"):
-                features.append(parsedArray[0])
-            elif (parsedArray[3] == "JJ"):
-                sentiments.append(parsedArray[0])
-            elif (parsedArray[3] == "INTF"):
-                catalysts.append(parsedArray[0])
-            elif (parsedArray[3] == "NEG"):
-                negatives.append(parsedArray[0])
+            
 
+    for word in parsedOutput:
+        if(word[5]=="mod"):
+            temp = parsedOutput[int(word[4])-1]
+            # print(temp)
+            temp[1] = " ".join((word[1],temp[1])) 
+            temp[2] = " ".join((word[2],temp[2]))
+            parsedOutput[int(word[4])-1] = temp
+            # parsedOutput.pop(int(word[0])-1)
+
+    print(parsedOutput)
+    # i = 1
+    # for word in parsedOutput:
+    #     word[0] = i
+    #     i+=1
+
+    print(parsedOutput)
+
+    for word in parsedOutput:
+        if(word[5] != "mod"):
+            if (word[3] == "NN" or word[3] == "NNP"):
+                features.append(word[0])
+            elif (word[3] == "JJ"):
+                sentiments.append(word[0])
+            elif (word[3] == "INTF"):
+                catalysts.append(word[0])
+            elif (word[3] == "NEG"):
+                negatives.append(word[0])          
+            selfNodes.append(word[0])
+            linkNodes.append(word[4])
+
+    # print(parsedOutput)
     for node1, node2 in zip(selfNodes, linkNodes):
         edges.append((node1,node2))
 
@@ -120,17 +142,17 @@ def parseText(query):
 
     for neg in negatives:
         for sentiment in sentiments:
-                tempL.append(spl[neg][sentiment])
+            tempL.append(spl[neg][sentiment])
         negSent.append((int(neg), int(sentiments[tempL.index(min(tempL))])))
         tempL.clear()
-    print(negSent)
+    # print(negSent)
 
     for cat in catalysts:
         for sentiment in sentiments:
-                tempL.append(spl[cat][sentiment])
+            tempL.append(spl[cat][sentiment])
         catSent.append((int(cat), int(sentiments[tempL.index(min(tempL))])))
         tempL.clear()
-    print(catSent)
+    # print(catSent)
 
 
     #for (x,y) in featureSent:
