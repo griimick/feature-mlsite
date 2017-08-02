@@ -30,24 +30,29 @@
                     <li>{{sentiment}}</li>
                 {% endfor %}
                 </ul>
+                {% if data[5] %}
                 <strong><h5>Catalysts</h5></strong>
                 <ul>
                 {% for catalyst in data[5] %}
                     <li>{{catalyst}}</li>
                 {% endfor %}
                 </ul>
+                {% endif %}
+                {% if data[6] %}
                 <strong><h5>Negations</h5></strong>
                 <ul>
                 {% for neg in data[6] %}
                     <li>{{neg}}</li>
                 {% endfor %}
                 </ul>
+                {% endif %}
                 <strong><h5>Sentiment Feature Relation</h5></strong>
                 <ul>
                 {% for (x,y) in data[3] %}
                     <li>{{data[4][y-1][1]}}---{{data[4][x-1][1]}} ({{data[7][data[4][x-1][1]][0]}},{{data[7][data[4][x-1][1]][1]}})</li>
                 {% endfor %}
                 </ul>
+                {% if data[6] %}
                 <strong><h5>Feature Sentiment Relation with Negation</h5></strong>
                 <ul>
                 {% for (a,b) in data[8] %}
@@ -58,6 +63,8 @@
                     {% endfor %}
                 {% endfor %}
                 </ul>
+                {% endif %}
+                {% if data[5] %}
                 <strong><h5>Feature Sentiment Relation with Catalyst</h5></strong>
                 <ul>
                 {% for (a,b) in data[9] %}
@@ -68,6 +75,7 @@
                     {% endfor %}
                 {% endfor %}
                 </ul>
+                {% endif %}
             </div>
             <div id="mynetwork"></div>
             </div>

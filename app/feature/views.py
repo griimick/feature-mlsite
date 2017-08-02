@@ -19,9 +19,9 @@ def feature():
 
         	scores['बहुत'] = ['1.5']
 
-        	print(featureSent)
-        	print(negSent)
-        	print(catSent)
+        	# print(featureSent)
+        	# print(negSent)
+        	# print(catSent)
 
         return render_template('projects/feature.html', data=[query, featureNames, sentimentNames, featureSent, parsedOutput, catalystNames, negativeNames, scores, negSent, catSent])
     else:
