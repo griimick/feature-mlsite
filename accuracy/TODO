@@ -1,0 +1,2 @@
+>pass every feature through sentiment list, if score then remove them from feature list and assign relation wwith remaining feature list
+>Make  a list of all the sentiments along with their realted features for manual dataset validaiton
