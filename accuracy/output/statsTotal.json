@@ -1,0 +1,91 @@
+{
+    "mov": {
+        "Correct Parsed and Polarity": 53,
+        "Parsed Polarity Accuracy": 0.05955056179775281,
+        "Parsing Accuracy": 0.12808988764044943,
+        "Total Sentences": 890,
+        "Correct Parsed": 114
+    },
+    "hom": {
+        "Correct Parsed and Polarity": 3,
+        "Parsed Polarity Accuracy": 0.03571428571428571,
+        "Parsing Accuracy": 0.03571428571428571,
+        "Total Sentences": 84,
+        "Correct Parsed": 3
+    },
+    "mob": {
+        "Correct Parsed and Polarity": 66,
+        "Parsed Polarity Accuracy": 0.057843996494303246,
+        "Parsing Accuracy": 0.1481156879929886,
+        "Total Sentences": 1141,
+        "Correct Parsed": 169
+    },
+    "tra": {
+        "Correct Parsed and Polarity": 23,
+        "Parsed Polarity Accuracy": 0.029639175257731958,
+        "Parsing Accuracy": 0.07345360824742268,
+        "Total Sentences": 776,
+        "Correct Parsed": 57
+    },
+    "lap": {
+        "Correct Parsed and Polarity": 14,
+        "Parsed Polarity Accuracy": 0.040229885057471264,
+        "Parsing Accuracy": 0.13505747126436782,
+        "Total Sentences": 348,
+        "Correct Parsed": 47
+    },
+    "tel": {
+        "Correct Parsed and Polarity": 2,
+        "Parsed Polarity Accuracy": 0.014814814814814815,
+        "Parsing Accuracy": 0.08148148148148149,
+        "Total Sentences": 135,
+        "Correct Parsed": 11
+    },
+    "hea": {
+        "Correct Parsed and Polarity": 4,
+        "Parsed Polarity Accuracy": 0.09302325581395349,
+        "Parsing Accuracy": 0.27906976744186046,
+        "Total Sentences": 43,
+        "Correct Parsed": 12
+    },
+    "spe": {
+        "Correct Parsed and Polarity": 3,
+        "Parsed Polarity Accuracy": 0.06382978723404255,
+        "Parsing Accuracy": 0.2127659574468085,
+        "Total Sentences": 47,
+        "Correct Parsed": 10
+    },
+    "Parsing Accuracy": 0.1159313273029352,
+    "sma": {
+        "Correct Parsed and Polarity": 9,
+        "Parsed Polarity Accuracy": 0.02727272727272727,
+        "Parsing Accuracy": 0.06363636363636363,
+        "Total Sentences": 330,
+        "Correct Parsed": 21
+    },
+    "Parsed Polarity Accuracy": 0.04412036182388776,
+    "Total Sentences": 5417,
+    "cam": {
+        "Correct Parsed and Polarity": 3,
+        "Parsed Polarity Accuracy": 0.02,
+        "Parsing Accuracy": 0.12,
+        "Total Sentences": 150,
+        "Correct Parsed": 18
+    },
+    "Correct Parsed and Polarity": 239,
+    "app": {
+        "Correct Parsed and Polarity": 7,
+        "Parsed Polarity Accuracy": 0.03056768558951965,
+        "Parsing Accuracy": 0.13973799126637554,
+        "Total Sentences": 229,
+        "Correct Parsed": 32
+    },
+    "tab": {
+        "Correct Parsed and Polarity": 52,
+        "Parsed Polarity Accuracy": 0.04180064308681672,
+        "Parsing Accuracy": 0.10771704180064309,
+        "Total Sentences": 1244,
+        "Correct Parsed": 134
+    },
+    "Correct Parsed": 628
+}

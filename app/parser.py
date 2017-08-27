@@ -3,11 +3,11 @@ import subprocess
 import codecs
 import networkx as nx
 import time
-def appendFalse(term, dictionary):
+def appendFalse(sentence, term, dictionary):
     if term in dictionary:
-        dictionary[term] = dictionary[term] + 1
+        dictionary[term].append(sentence)
     else:
-        dictionary[term] = 1
+        dictionary[term] = [sentence]
 
 def getNames(words, parsedOutput):
     wordNames= []
