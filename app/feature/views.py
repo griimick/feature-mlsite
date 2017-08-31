@@ -20,11 +20,11 @@ def feature():
             catSent = relationList[2]
 
             polarityFeature, scores= featurePolarity(scoreList, namesList, relationList, parsedOutput)
-            #print(scores)
-            # print(featureSent)
+            print(scores)
+            print(polarityFeature)
             # print(negSent)
             # print(catSent)
 
-        return render_template('projects/feature.html', data=[query, featureNames, sentimentNames, sentFeature, parsedOutput, catalystNames, negativeNames, scores, negSent, catSent])
+        return render_template('projects/feature.html', score = scores ,outputs = polarityFeature, data=[query, featureNames, sentimentNames, sentFeature, parsedOutput, catalystNames, negativeNames, scores, negSent, catSent])
     else:
         return render_template('projects/feature.html')

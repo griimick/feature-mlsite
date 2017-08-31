@@ -27,14 +27,14 @@
                 <strong><h5>Sentiments</h5></strong>
                 <ul>
                 {% for sentiment in data[2] %}
-                    <li>{{sentiment}}</li>
+                    <li>{{sentiment}}&nbsp;&nbsp;({{score[sentiment][0]}})</li>
                 {% endfor %}
                 </ul>
                 {% if data[5] %}
-                <strong><h5>Catalysts</h5></strong>
+                <strong><h5>Intensifier</h5></strong>
                 <ul>
                 {% for catalyst in data[5] %}
-                    <li>{{catalyst}}</li>
+                    <li>{{catalyst}}&nbsp;&nbsp;({{score[catalyst][0]}})</li>
                 {% endfor %}
                 </ul>
                 {% endif %}
@@ -48,34 +48,18 @@
                 {% endif %}
                 <strong><h5>Sentiment Feature Relation</h5></strong>
                 <ul>
-                {% for (x,y) in data[3] %}
-                    <li>{{data[4][y-1][1]}}---{{data[4][x-1][1]}} ({{data[7][data[4][x-1][1]][0]}},{{data[7][data[4][x-1][1]][1]}})</li>
+                {% for output in outputs %}
+                    <li>{{output['term']}}---
+                    {% if output['cat'] %}
+                    {{output['cat']}}---
+                    {% endif %}
+                    {{output['sent']}}
+                    {% if output['neg'] %}
+                    ---{{output['neg']}}
+                    {% endif %} 
+                    ({{output['score']}})</li>
                 {% endfor %}
                 </ul>
-                {% if data[6] %}
-                <strong><h5>Feature Sentiment Relation with Negation</h5></strong>
-                <ul>
-                {% for (a,b) in data[8] %}
-                    {% for (x,y) in data[3] %}
-                        {% if(b==x) %}
-                    <li>{{data[4][y-1][1]}} --- {{data[4][x-1][1]}} --- {{data[4][a-1][1]}} ({{data[7][data[4][x-1][1]][1]}},{{data[7][data[4][x-1][1]][0]}})</li>
-                        {% endif %}
-                    {% endfor %}
-                {% endfor %}
-                </ul>
-                {% endif %}
-                {% if data[5] %}
-                <strong><h5>Feature Sentiment Relation with Catalyst</h5></strong>
-                <ul>
-                {% for (a,b) in data[9] %}
-                    {% for (x,y) in data[3] %}
-                        {% if(b==x) %}
-                    <li>{{data[4][y-1][1]}} --- {{data[4][a-1][1]}} --- {{data[4][x-1][1]}} ({{data[7][data[4][x-1][1]][1]}},{{data[7][data[4][x-1][1]][0]}})</li>
-                        {% endif %}
-                    {% endfor %}
-                {% endfor %}
-                </ul>
-                {% endif %}
             </div>
             <div id="mynetwork"></div>
             </div>
