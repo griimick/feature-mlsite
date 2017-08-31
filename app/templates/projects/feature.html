@@ -57,7 +57,15 @@
                     {% if output['neg'] %}
                     ---{{output['neg']}}
                     {% endif %} 
-                    ({{output['score']}})</li>
+                    (Polarity :
+                    {% if output['polarity'] == "peu" %}
+                    <span class=neu>Neutral</span>
+                    {% elif output['polarity'] == "neg" %}
+                    <span class=pos>Positive</span>
+                    {% elif output['polarity'] == "pos" %}
+                    <span class=neg>Negative</span>
+                    {% endif %}
+                    , Score : {{output['score']}})</li>
                 {% endfor %}
                 </ul>
             </div>

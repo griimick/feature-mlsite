@@ -47,7 +47,7 @@ def polarityScore(score):
     return score
 
 def typeScore(score, placeholder):
-    score[1] = placeholder
+    score[1] = float(placeholder)
     return score
 
 def polarityFromScore(score):
@@ -219,21 +219,26 @@ def featurePolarity(scoreList, namesList, relationList, parsedOutput):
    
     for sentiment in sentFeature:
         tempDict = {}
+        tempScore = 0.0
         tempFeature = parsedOutput[sentiment[1]-1][1]
         tempDict["term"] = tempFeature
         tempSentiment = parsedOutput[sentiment[0]-1][1]
         tempDict["sent"] = tempSentiment
+        print(tempDict["sent"])
         tempScore += scores[tempSentiment][0]
+        print(tempScore)
         for catalyst in catSent:
             if(catalyst[1] == sentiment[0]):
                 tempCatalyst = parsedOutput[catalyst[0]-1][1]
                 tempDict["cat"]=tempCatalyst
                 tempScore += scores[tempCatalyst][0]
+        print("after catalyst score:", tempScore)
         for neg in negSent:
             if(neg[1] == sentiment[0]):
                 tempScore *= -1
                 tempNeg = parsedOutput[neg[0]-1][1]
                 tempDict["neg"] = tempNeg
+        print("after negation score:", tempScore)
         tempDict["score"] = tempScore
         tempDict["polarity"] = polarityFromScore(tempScore)
         polarityFeature.append(dict(tempDict))
