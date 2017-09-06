@@ -3,7 +3,7 @@ from ..parser import parseText,featurePolarity
 
 feature_mod = Blueprint('feature', __name__, template_folder='templates', static_folder='static')
 
-@feature_mod.route('/feature', methods=['GET', 'POST'])
+@feature_mod.route('/aspect-based', methods=['GET', 'POST'])
 def feature():
     if request.method == 'POST':
         query = request.form['liner-text']

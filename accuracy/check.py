@@ -124,8 +124,8 @@ def check(field):
     return stats
 
 
-fields = ['app', 'cam', 'hea', 'hom', 'lap', 'mob', 'mov', 'sma', 'spe', 'tab', 'tra', 'tel']
-# fields = ['hea']
+# fields = ['app', 'cam', 'hea', 'hom', 'lap', 'mob', 'mov', 'sma', 'spe', 'tab', 'tra', 'tel']
+fields = ['mov', 'mob']
 dataStats = {}
 trueTotal = 0
 countParsedTotal = 0

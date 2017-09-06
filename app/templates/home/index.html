@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="front-page">
-        <h2>Feature Based Sentiment analysis project</h2>
-        <p>us et ultrices posuere cubilia Curae; Aliquam imperdiet convallis pellentesque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin ac est tempor, fringilla leo id, interdum arcu. Nam sed eros vestibulum, hendrerit arcu aliquet, interdum lacus. Aenean et justo non ipsum eleifend lobortis. Pellentesque venenatis, justo non accumsan dignissim, metus ipsum imperdiet est, vitae fringilla risus ex rhoncus est.</p>
-        <br>
-        <h4>Feature analysis</h4>
-        <p>finibus tempus. Proin tortor enim, fringilla elementum suscipit ac, eleifend sit amet libero. Nulla gravida dolor quam, vel sodales lorem laoreet in. Suspendisse id purus luctus velit convallis tristique. Aliquam non nisl bibendum, eleifend lorem non, ullamcorper magna. Proin a pharetra libero.</p>
+        <h2>Aspect-Based Sentiment Analysis System</h2>
+        <p>Sentiment Analysis (SA) is a natural language processing task that uses the computational approach to extract the opinionated content and classifies it as positive, negative or neutral. Generally, sentiment analysis can be performed at three levels, i.e., document, sentence and aspect level. This system focuses on aspect-based SA system for Hindi language.</p>
+        <p>Aspect-based sentiment analysis helps to capture nuances about the objects of interest. As sometimes sentences may consist of different sentiments associated to different aspects of an entity and overall polarity of the sentence does not help to identify the absolute opinion of the writer. For example, consider the sentence, “The story of the movie is weak but music is good”. This sentence consists of negative (i.e., “weak”) and positive (i.e., “good”) sentiments about aspects “story” and “music”, respectively. </p>
         <br>
         <a href="{{ url_for('feature.feature') }}">
             <button type="button" class="btn btn-primary">Experience us now</button>

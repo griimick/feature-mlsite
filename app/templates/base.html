@@ -2,7 +2,7 @@
 <html lang="en">
 
     <head>
-        <title>Sentiment analysis</title>
+        <title>Aspect based Sentiment analysis</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="{{ url_for('static',filename='style.css') }}" rel="stylesheet">
@@ -43,7 +43,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{ url_for('feature.feature') }}">Feature Analysis</a></li>
+                        <li><a href="{{ url_for('feature.feature') }}">Aspect based Analysis</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -51,6 +51,6 @@
             <!-- /.container-fluid -->
         </nav>
         {% block content %}{% endblock %}
-        <script> var s = document.createElement('script'); s.setAttribute('src','http://developer.quillpad.in/static/js/quill.js?lang=Hindi&key=6edf6d6bb1d3eb6e985ad201c287f4a2'); s.setAttribute('id','qpd_script'); document.head.appendChild(s); </script> <span id="qpd_banner">Hindi Typing On This Site Is Powered By <a href="http://www.quillpad.in/" target="_blank">Quillpad</a>.</span>
+        <script> var s = document.createElement('script'); s.setAttribute('src','http://developer.quillpad.in/static/js/quill.js?lang=Hindi&key=6edf6d6bb1d3eb6e985ad201c287f4a2'); s.setAttribute('id','qpd_script'); document.head.appendChild(s); </script> 
     </body>
 </html>

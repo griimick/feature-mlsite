@@ -1,7 +1,7 @@
 {
-    "Correct Parsed and Polarity": 66,
-    "Parsed Polarity Accuracy": 0.057843996494303246,
-    "Parsing Accuracy": 0.1481156879929886,
+    "Correct Parsed": 169,
     "Total Sentences": 1141,
-    "Correct Parsed": 169
+    "Correct Parsed and Polarity": 56,
+    "Parsing Accuracy": 0.1481156879929886,
+    "Parsed Polarity Accuracy": 0.049079754601226995
 }
