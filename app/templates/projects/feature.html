@@ -31,7 +31,7 @@
                 {% endfor %}
                 </ul>
                 {% if data[5] %}
-                <strong><h5>Intensifier</h5></strong>
+                <strong><h5>Intensifiers</h5></strong>
                 <ul>
                 {% for catalyst in data[5] %}
                     <li>{{catalyst}}</li>
@@ -46,7 +46,7 @@
                 {% endfor %}
                 </ul>
                 {% endif %}
-                <strong><h5>Aspect-Sentiment Relation</h5></strong>
+                <strong><h5>Aspect-Sentiment Relations</h5></strong>
                 <ul>
                 {% for output in outputs %}
                     <li>{{output['term']}}---
