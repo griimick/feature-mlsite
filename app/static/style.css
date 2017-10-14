@@ -118,6 +118,13 @@ input[type=file] {
     border: 1px solid lightgray;
 }
 
+#mynetwork2 {
+    width: 1200px;
+    height: 400px;
+    border: 1px solid lightgray;
+}
+
+
 .carousel-content {
     color:black;
     display:flex;
