@@ -5,7 +5,6 @@
         <title>Aspect based Sentiment analysis</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="{{ url_for('static',filename='style.css') }}" rel="stylesheet">
         <script type="text/javascript" src="{{ url_for('static',filename='vis.js') }}"></script>
         <link href="{{ url_for('static',filename='vis-network.min.css') }}" rel="stylesheet" type="text/css" />
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
@@ -22,6 +21,8 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
+            
+        <link href="{{ url_for('static',filename='style.css') }}" rel="stylesheet">
     </head>
     <body>
         <nav class="navbar navbar-default">

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="front-page">
-        <h2>Aspect-Based Sentiment Analysis System</h2>
+        <h2> <b>(BETA Testing)</b> Aspect-Based Sentiment Analysis System</h2>
         <p>Sentiment Analysis (SA) is a natural language processing task that uses the computational approach to extract the opinionated content and classifies it as positive, negative or neutral. Generally, sentiment analysis can be performed at three levels, i.e., document, sentence and aspect level. This system focuses on aspect-based SA system for Hindi language.</p>
         <p>Aspect-based sentiment analysis helps to capture nuances about the objects of interest. As sometimes sentences may consist of different sentiments associated to different aspects of an entity and overall polarity of the sentence does not help to identify the absolute opinion of the writer. For example, consider the sentence, “The story of the movie is weak but music is good”. This sentence consists of negative (i.e., “weak”) and positive (i.e., “good”) sentiments about aspects “story” and “music”, respectively. </p>
         <br>
@@ -9,4 +9,201 @@
             <button type="button" class="btn btn-primary">Experience us now</button>
         </a>
     </div>
+
+
+    <div id="text-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
+    <!-- Wrapper for slides -->
+    <div class="carousel-controls">
+        <a class="left carousel-control" href="#text-carousel" data-slide="prev" style="background:none">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#text-carousel" data-slide="next" style="background:none">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="carousel-content">
+                        <div class="result-container">
+            <center><h4>इस फ़िल्म की कहानी कमज़ोर नहीं है, गीत मधुर हैं पर निर्देशन बहुत बुरा है।</h4></center>
+            <div class="results">
+            <div class="aggregate-list">
+                <strong><h5>Aspects</h5></strong>
+                <ul>
+                
+                    <li>फ़िल्म</li>
+                
+                    <li>कहानी</li>
+                
+                    <li>गीत</li>
+                
+                    <li>निर्देशन</li>
+                
+                </ul>
+                <strong><h5>Sentiments</h5></strong>
+                <ul>
+                
+                    <li>कमज़ोर&nbsp;&nbsp;(0.0)</li>
+                
+                    <li>मधुर&nbsp;&nbsp;(0.0)</li>
+                
+                    <li>बुरा&nbsp;&nbsp;(-0.375)</li>
+                
+                </ul>
+                
+                <strong><h5>Intensifiers</h5></strong>
+                <ul>
+                
+                    <li>बहुत</li>
+                
+                </ul>
+                
+                
+                <strong><h5>Negations</h5></strong>
+                <ul>
+                
+                    <li>नहीं</li>
+                
+                </ul>
+                
+                <strong><h5>Aspect-Sentiment Relations</h5></strong>
+                <ul>
+                
+                    <li>कहानी---
+                    
+                    कमज़ोर
+                    
+                    ---नहीं
+                     
+                    (Polarity :
+                    
+                    <span class="neu">Neutral</span>
+                    
+                    , Score : -0.0)</li>
+                
+                    <li>गीत---
+                    
+                    मधुर
+                     
+                    (Polarity :
+                    
+                    <span class="neu">Neutral</span>
+                    
+                    , Score : 0.0)</li>
+                
+                    <li>निर्देशन---
+                    
+                    बहुत---
+                    
+                    बुरा
+                     
+                    (Polarity :
+                    
+                    <span class="neg">Negative</span>
+                    
+                    , Score : -0.5)</li>
+                
+                </ul>
+            </div>
+            <div id="mynetwork"><div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;"><canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="799" height="398"></canvas></div></div>
+            </div>
+            </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carousel-content">
+                        <div class="result-container">
+            <center><h4>इस फ़िल्म की कहानी कमज़ोर नहीं है, गीत मधुर हैं पर निर्देशन बहुत बुरा है।</h4></center>
+            <div class="results">
+            <div class="aggregate-list">
+                <strong><h5>Aspects</h5></strong>
+                <ul>
+                
+                    <li>फ़िल्म</li>
+                
+                    <li>कहानी</li>
+                
+                    <li>गीत</li>
+                
+                    <li>निर्देशन</li>
+                
+                </ul>
+                <strong><h5>Sentiments</h5></strong>
+                <ul>
+                
+                    <li>कमज़ोर&nbsp;&nbsp;(0.0)</li>
+                
+                    <li>मधुर&nbsp;&nbsp;(0.0)</li>
+                
+                    <li>बुरा&nbsp;&nbsp;(-0.375)</li>
+                
+                </ul>
+                
+                <strong><h5>Intensifiers</h5></strong>
+                <ul>
+                
+                    <li>बहुत</li>
+                
+                </ul>
+                
+                
+                <strong><h5>Negations</h5></strong>
+                <ul>
+                
+                    <li>नहीं</li>
+                
+                </ul>
+                
+                <strong><h5>Aspect-Sentiment Relations</h5></strong>
+                <ul>
+                
+                    <li>कहानी---
+                    
+                    कमज़ोर
+                    
+                    ---नहीं
+                     
+                    (Polarity :
+                    
+                    <span class="neu">Neutral</span>
+                    
+                    , Score : -0.0)</li>
+                
+                    <li>गीत---
+                    
+                    मधुर
+                     
+                    (Polarity :
+                    
+                    <span class="neu">Neutral</span>
+                    
+                    , Score : 0.0)</li>
+                
+                    <li>निर्देशन---
+                    
+                    बहुत---
+                    
+                    बुरा
+                     
+                    (Polarity :
+                    
+                    <span class="neg">Negative</span>
+                    
+                    , Score : -0.5)</li>
+                
+                </ul>
+            </div>
+            <div id="mynetwork"><div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;"><canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="799" height="398"></canvas></div></div>
+            </div>
+            </div>
+                    </div>
+                </div>               
+            </div>
+        </div>
+    </div>
+    <!-- Controls --> <
+
+</div>
 {% endblock %}

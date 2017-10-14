@@ -1,10 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="container">
-        <div class="col-md-10">
+        <div class="col-md-8">
             <h4 class="legend">Please Enter your hindi text for Aspect based Sentiment Analysis</h4>
                     <form id="input-form" action="{{ url_for('feature.feature') }}", method="post">
-                        <textarea rows="5" cols="100" style="margin-bottom: 20px" name="liner-text" default="">{% if data %}{{data[0]}}{% else %}इस फ़िल्म की कहानी कमज़ोर नहीं है, गीत मधुर हैं पर निर्देशन बहुत बुरा है।{% endif %}</textarea>
+                        <textarea class="form-control" rows="5" cols="100" style="margin-bottom: 20px" name="liner-text" default="">{% if data %}{{data[0]}}{% else %}इस फ़िल्म की कहानी कमज़ोर नहीं है, गीत मधुर हैं पर निर्देशन बहुत बुरा है।{% endif %}</textarea>
+                        <br>
+                <input type="submit" value="Predict" class="btn btn-primary">
+            </form>
+            </div>
+            {% if message %}
+                <div class="alert alert-danger warning">{{ message }}</div>
+            {% endif %}
+        <div class="col-md-4">
+            <h4 class="legend">Document:</h4>
+                    <form id="input-form" action="{{ url_for('feature.feature') }}", method="post">
+                        <textarea class="form-control" rows="5" cols="100" style="margin-bottom: 20px" name="liner-text" default="">{% if data %}{{data[0]}}{% else %}इस फ़िल्म की कहानी कमज़ोर नहीं है, गीत मधुर हैं पर निर्देशन बहुत बुरा है।{% endif %}</textarea>
                         <br>
                 <input type="submit" value="Predict" class="btn btn-primary">
             </form>
@@ -15,6 +26,14 @@
     </div>
     <script> var s = document.createElement('script'); s.setAttribute('src','http://developer.quillpad.in/static/js/quill.js?lang=Hindi&key=6edf6d6bb1d3eb6e985ad201c287f4a2'); s.setAttribute('id','qpd_script'); document.head.appendChild(s); </script>
     {% if data %}
+    <div class="result-container">
+    <div id="text-carousel" class="carousel slide" data-ride="carousel">
+    <div class="row">
+        <div class="col-xs-offset-3 col-xs-6">
+        <div class="carousel-inner">
+                <div class="item active">
+                    <div class="carousel-content">
+                    <div class="result-container">
             <center><h4>{{data[0]}}</h4></center>
             <div class="results">
             <div class="aggregate-list">
@@ -70,6 +89,12 @@
                 </ul>
             </div>
             <div id="mynetwork"></div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div></div></div>
+            </div>
             </div>
             <script type="text/javascript">
                 // create an array with nodes
