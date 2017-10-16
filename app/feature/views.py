@@ -6,25 +6,56 @@ feature_mod = Blueprint('feature', __name__, template_folder='templates', static
 @feature_mod.route('/aspect-based', methods=['GET', 'POST'])
 def feature():
     if request.method == 'POST':
-        query = request.form['liner-text']
-        if query is not None:
-            parsedOutput, scoreList, namesList, relationList= parseText(query)
+        queryDoc = request.form['liner-text']
+        queries = queryDoc.split('।')
+        featureNames = []
+        sentimentNames = []
+        catalystNames = []
+        negativeNames = []
 
-            featureNames = namesList[0]
-            sentimentNames = namesList[1]
-            catalystNames = namesList[2]
-            negativeNames = namesList[3]
+        sentFeature = []
+        negSent = []
+        catSent = []
+
+        polarityFeature = []
+        scores = []
+
+        parsedOutput = []
+
+        dataRender = []
+        count = []
+
+        if queries is not None:
+            queries.pop()
+            print(len(queries))
+            c =0;
+            for query in queries:
+                print(query)
+                c = c+1
+                parsedOutputQ, scoreListQ, namesListQ, relationListQ = parseText(query)
+                
+                featureNames.append(namesListQ[0])
+                sentimentNames.append(namesListQ[1])
+                catalystNames.append(namesListQ[2])
+                negativeNames.append(namesListQ[3])
             
-            sentFeature = relationList[0]
-            negSent = relationList[1]
-            catSent = relationList[2]
+                sentFeature.append(relationListQ[0])
+                negSent.append(relationListQ[1])
+                catSent.append(relationListQ[2])
 
-            polarityFeature, scores= featurePolarity(scoreList, namesList, relationList, parsedOutput)
-            print(scores)
-            print(polarityFeature)
-            # print(negSent)
-            # print(catSent)
+                polarityFeatureQ, scoresQ= featurePolarity(scoreListQ, namesListQ, relationListQ, parsedOutputQ)
+                
+                polarityFeature.append(polarityFeatureQ)
+                scores.append(scoresQ)
+                parsedOutput.append(parsedOutputQ)
+                count.append(c)
+                print(scoresQ)
+                print(polarityFeatureQ)
+                # print(negSent)
+                # print(catSent)
+                dataQ = [query, namesListQ[0], namesListQ[1], relationListQ[0], parsedOutputQ, namesListQ[2], namesListQ[3], scoresQ, relationListQ[1], relationListQ[2]]
+                dataRender.append(dataQ)
 
-        return render_template('projects/feature.html', score = scores ,outputs = polarityFeature, data=[query, featureNames, sentimentNames, sentFeature, parsedOutput, catalystNames, negativeNames, scores, negSent, catSent])
+        return render_template('projects/feature.html', scores = scores ,outputs = polarityFeature, datas=dataRender, zip = zip(count,scores,polarityFeature, dataRender), queryDoc = queryDoc)
     else:
         return render_template('projects/feature.html')

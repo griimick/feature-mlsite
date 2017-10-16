@@ -4,129 +4,161 @@
         <div class="col-md-8">
             <h4 class="legend">Please Enter your hindi text for Aspect based Sentiment Analysis</h4>
                     <form id="input-form" action="{{ url_for('feature.feature') }}", method="post">
-                        <textarea class="form-control" rows="5" cols="100" style="margin-bottom: 20px" name="liner-text" default="">{% if data %}{{data[0]}}{% else %}इस फ़िल्म की कहानी कमज़ोर नहीं है, गीत मधुर हैं पर निर्देशन बहुत बुरा है।{% endif %}</textarea>
+                        <textarea class="form-control" rows="5" cols="100" style="margin-bottom: 20px" name="liner-text" default="">{% if queryDoc %}{{queryDoc}}{% else %}इस फ़िल्म की कहानी कमज़ोर नहीं है, गीत मधुर हैं पर निर्देशन बहुत बुरा है।{% endif %}</textarea>
                         <br>
                 <input type="submit" value="Predict" class="btn btn-primary">
             </form>
             </div>
+
             {% if message %}
                 <div class="alert alert-danger warning">{{ message }}</div>
             {% endif %}
-        <div class="col-md-4">
-            <h4 class="legend">Document:</h4>
-                    <form id="input-form" action="{{ url_for('feature.feature') }}", method="post">
-                        <textarea class="form-control" rows="5" cols="100" style="margin-bottom: 20px" name="liner-text" default="">{% if data %}{{data[0]}}{% else %}इस फ़िल्म की कहानी कमज़ोर नहीं है, गीत मधुर हैं पर निर्देशन बहुत बुरा है।{% endif %}</textarea>
-                        <br>
-                <input type="submit" value="Predict" class="btn btn-primary">
-            </form>
-            </div>
-            {% if message %}
-                <div class="alert alert-danger warning">{{ message }}</div>
-            {% endif %}
-    </div>
+
     <script> var s = document.createElement('script'); s.setAttribute('src','http://developer.quillpad.in/static/js/quill.js?lang=Hindi&key=6edf6d6bb1d3eb6e985ad201c287f4a2'); s.setAttribute('id','qpd_script'); document.head.appendChild(s); </script>
-    {% if data %}
-    <div class="result-container">
-    <div id="text-carousel" class="carousel slide" data-ride="carousel">
-    <div class="row">
-        <div class="col-xs-offset-3 col-xs-6">
-        <div class="carousel-inner">
-                <div class="item active">
-                    <div class="carousel-content">
-                    <div class="result-container">
-            <center><h4>{{data[0]}}</h4></center>
-            <div class="results">
-            <div class="aggregate-list">
-                <strong><h5>Aspects</h5></strong>
-                <ul>
-                {% for feature in data[1] %}
-                    <li>{{feature}}</li>
-                {% endfor %}
-                </ul>
-                <strong><h5>Sentiments</h5></strong>
-                <ul>
-                {% for sentiment in data[2] %}
-                    <li>{{sentiment}}&nbsp;&nbsp;({{score[sentiment][0]}})</li>
-                {% endfor %}
-                </ul>
-                {% if data[5] %}
-                <strong><h5>Intensifiers</h5></strong>
-                <ul>
-                {% for catalyst in data[5] %}
-                    <li>{{catalyst}}</li>
-                {% endfor %}
-                </ul>
-                {% endif %}
-                {% if data[6] %}
-                <strong><h5>Negations</h5></strong>
-                <ul>
-                {% for neg in data[6] %}
-                    <li>{{neg}}</li>
-                {% endfor %}
-                </ul>
-                {% endif %}
-                <strong><h5>Aspect-Sentiment Relations</h5></strong>
-                <ul>
-                {% for output in outputs %}
-                    <li>{{output['term']}}---
-                    {% if output['cat'] %}
-                    {{output['cat']}}---
+
+    {% if datas %}
+    <div class="col-md-4" style="overflow-y:scroll; height:269px">
+        <strong><h5>Aspect-Sentiment Relations</h5></strong>
+        <ul>
+        {% for outputQ in outputs %}
+        {% for output in outputQ %}
+            <li>{{output['term']}}---
+            {% if output['cat'] %}
+            {{output['cat']}}---
+            {% endif %}
+            {{output['sent']}}
+            {% if output['neg'] %}
+            ---{{output['neg']}}
+            {% endif %} 
+            (Polarity :
+            {% if output['polarity'] == "neu" %}
+            <span class=neu>Neutral</span>
+            {% elif output['polarity'] == "neg" %}
+            <span class=neg>Negative</span>
+            {% elif output['polarity'] == "pos" %}
+            <span class=pos>Positive</span>
+            {% endif %}
+            , Score : {{output['score']}})</li>
+        {% endfor %}
+        {% endfor %}
+        </ul>
+    </div>
+    </div>
+
+        <div id="text-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <!-- Wrapper for slides -->
+        <div class="carousel-controls">
+            <a class="left carousel-control" href="#text-carousel" data-slide="prev" style="background:none">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#text-carousel" data-slide="next" style="background:none">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+        <div class="row">
+            <div class="col carousel-fade">
+                <div class="carousel-inner">
+        {% for count, score, outputQ, data in zip %}
+                    <div class="item {% if count == 1 %} active{% endif %}">
+                        <div class="carousel-content">
+                            <div class="result-container">
+                <center><h4>{{data[0]}}</h4></center>
+                <div class="results">
+                <div class="aggregate-list">
+                    <strong><h5>Aspects</h5></strong>
+                    <ul>
+                    {% for feature in data[1] %}
+                        <li>{{feature}}</li>
+                    {% endfor %}
+                    </ul>
+                    <strong><h5>Sentiments</h5></strong>
+                    <ul>
+                    {% for sentiment in data[2] %}
+                        <li>{{sentiment}}&nbsp;&nbsp;({{score[sentiment][0]}})</li>
+                    {% endfor %}
+                    </ul>
+                    {% if data[5] %}
+                    <strong><h5>Intensifiers</h5></strong>
+                    <ul>
+                    {% for catalyst in data[5] %}
+                        <li>{{catalyst}}</li>
+                    {% endfor %}
+                    </ul>
                     {% endif %}
-                    {{output['sent']}}
-                    {% if output['neg'] %}
-                    ---{{output['neg']}}
-                    {% endif %} 
-                    (Polarity :
-                    {% if output['polarity'] == "neu" %}
-                    <span class=neu>Neutral</span>
-                    {% elif output['polarity'] == "neg" %}
-                    <span class=neg>Negative</span>
-                    {% elif output['polarity'] == "pos" %}
-                    <span class=pos>Positive</span>
+                    {% if data[6] %}
+                    <strong><h5>Negations</h5></strong>
+                    <ul>
+                    {% for neg in data[6] %}
+                        <li>{{neg}}</li>
+                    {% endfor %}
+                    </ul>
                     {% endif %}
-                    , Score : {{output['score']}})</li>
-                {% endfor %}
-                </ul>
-            </div>
-            <div id="mynetwork"></div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div></div></div>
-            </div>
-            </div>
-            <script type="text/javascript">
-                // create an array with nodes
-                var nodes = new vis.DataSet([
-                {% for node in data[4] %}
-                    {id: {{node[0]}}, label: '{{node[1]}}', color: {% if node[1] in data[2] %}'lime'{% elif node[1] in data[1] %}'LightSkyBlue'{% elif node[1] in data[5]%}'gold'{% elif node[1] in data[6] %}'OrangeRed'{% else %}'LightGray'{% endif %}},
-                {% endfor %}
-                ]);
-                // create an array with edges
-                var edges = new vis.DataSet([
-                {% for node in data[4] %}
-                    {from: {{node[0]}}, to: {{node[4]}}, dashes: false, label: '{{node[5]}}', font: {align: 'top', size: 10}},
-                {% endfor %}
-                {% for (x,y) in data[3] %}
-                    {from: {{x}}, to: {{y}}, dashes: true, color:{color:'red'}},
-                {% endfor %}
-                ]);
-                
+                    <strong><h5>Aspect-Sentiment Relations</h5></strong>
+                    <ul>
+                    {% for output in outputQ %}
+                        <li>{{output['term']}}---
+                        {% if output['cat'] %}
+                        {{output['cat']}}---
+                        {% endif %}
+                        {{output['sent']}}
+                        {% if output['neg'] %}
+                        ---{{output['neg']}}
+                        {% endif %} 
+                        (Polarity :
+                        {% if output['polarity'] == "neu" %}
+                        <span class=neu>Neutral</span>
+                        {% elif output['polarity'] == "neg" %}
+                        <span class=neg>Negative</span>
+                        {% elif output['polarity'] == "pos" %}
+                        <span class=pos>Positive</span>
+                        {% endif %}
+                        , Score : {{output['score']}})</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                <div id="mynetwork{{count}}" class="net"><div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;"><canvas style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;" width="799" height="398"></canvas></div></div>
+                </div>
+                </div>
+                        </div>
+                    </div>  
+                    <script type="text/javascript">
+                        // create an array with nodes
+                        var nodes = new vis.DataSet([
+                        {% for node in data[4] %}
+                            {id: {{node[0]}}, label: '{{node[1]}}', color: {% if node[1] in data[2] %}'lime'{% elif node[1] in data[1] %}'LightSkyBlue'{% elif node[1] in data[5]%}'gold'{% elif node[1] in data[6] %}'OrangeRed'{% else %}'LightGray'{% endif %}},
+                        {% endfor %}
+                        ]);
+                        // create an array with edges
+                        var edges = new vis.DataSet([
+                        {% for node in data[4] %}
+                            {from: {{node[0]}}, to: {{node[4]}}, dashes: false, label: '{{node[5]}}', font: {align: 'top', size: 10}},
+                        {% endfor %}
+                        {% for (x,y) in data[3] %}
+                            {from: {{x}}, to: {{y}}, dashes: true, color:{color:'red'}},
+                        {% endfor %}
+                        ]);
+                        
 
-                // create a network
-                var container = document.getElementById('mynetwork');
+                        // create a network
+                        var container = document.getElementById('mynetwork{{count}}');
 
-                // provide the data in the vis format
-                var data = {
-                    nodes: nodes,
-                    edges: edges
-                };
-                var options = {};
+                        // provide the data in the vis format
+                        var data = {
+                            nodes: nodes,
+                            edges: edges
+                        };
+                        var options = {};
 
-                // initialize your network!
-                var network = new vis.Network(container, data, options);
-            </script>
+                        // initialize your network!
+                        var network{{count}} = new vis.Network(container, data, options);
+                    </script>
+                    {% endfor %}
+                         </div>      
+                </div>
+            </div>
+        </div>
+        <!-- Controls -->
 
-        {% endif %}
+    </div> 
+    {% endif %}
     {% endblock %}
