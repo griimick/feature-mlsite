@@ -44,7 +44,17 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{ url_for('feature.feature') }}">Aspect based Analysis</a></li>
+                        <li><a href="{{ url_for('home.home') }}">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Analysis<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url_for('liner.liner') }}">Sentence Analysis</a></li>
+                                <li><a href="{{ url_for('doc.doc') }}">Document Analysis</a></li>
+                                <li><a href="{{ url_for('twitter.twitter') }}">Tweets Analysis</a></li>
+                                <li><a href="{{ url_for('feature.feature') }}">Aspect Analysis</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ url_for('team.team') }}">Our Team</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
