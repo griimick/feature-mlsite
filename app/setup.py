@@ -12,6 +12,7 @@ setup(
         'gunicorn',
         'h5py',
         'scikit-learn',
-        'networkx'
+        'networkx',
+        'tweepy'
     ],
 )
