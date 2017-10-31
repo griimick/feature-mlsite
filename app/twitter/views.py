@@ -19,15 +19,17 @@ def takeout_non_ascii(s):
 def twitter():
     if request.method == 'POST':
 
-        text = []
-        for tweet in tweepy.Cursor(api.search, request.form['topic'], lang='hi').items(100):
-            temp = ''.join(takeout_non_ascii(tweet.text))
-            if not len(temp) in range(3):
-                text.append(temp)
+        # text = []
+        # for tweet in tweepy.Cursor(api.search, request.form['topic'], lang='hi').items(100):
+        #     temp = ''.join(takeout_non_ascii(tweet.text))
+        #     if not len(temp) in range(3):
+        #         text.append(temp)
 
         # data, emotion_sents, score, line_sentiment, text, length = processing_results(text)
 
-        return render_template('projects/twitter.html', data=[data, emotion_sents, score, zip(text, line_sentiment), length])
+        #return render_template('projects/twitter.html', data=[data, emotion_sents, score, zip(text, line_sentiment), length])
+        return render_template('projects/twitter.html', message='Temporarily Down')
     else:
-        return render_template('projects/twitter.html')
+        # return render_template('projects/twitter.html')
+        return render_template('projects/twitter.html', message='Temporarily Down')
 

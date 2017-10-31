@@ -18,27 +18,31 @@ def allowed_file(filename):
 @doc_mod.route('/doc', methods=['GET', 'POST'])
 def doc():
     if request.method == 'POST':
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['file']
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            if not os.path.exists(UPLOAD_FOLDER):
-                os.mkdir(UPLOAD_FOLDER)
-            file.save(os.path.join(UPLOAD_FOLDER, filename))
-        with open('./uploads/' + filename) as f:
-            query = f.read()
+        # if 'file' not in request.files:
+        #     flash('No file part')
+        #     return redirect(request.url)
+        # file = request.files['file']
+        # if file.filename == '':
+        #     flash('No selected file')
+        #     return redirect(request.url)
+        # if file and allowed_file(file.filename):
+        #     filename = secure_filename(file.filename)
+        #     if not os.path.exists(UPLOAD_FOLDER):
+        #         os.mkdir(UPLOAD_FOLDER)
+        #     file.save(os.path.join(UPLOAD_FOLDER, filename))
+        # with open('./uploads/' + filename) as f:
+        #     query = f.read()
 
-        text = query.split('.')[:-1]
+        # text = query.split('.')[:-1]
+        text = ""
         if len(text) == 0:
-            return render_template('projects/doc.html', message='Please separate each line with "."')
+            # return render_template('projects/doc.html', message='Please separate each line with "."')
+            return render_template('projects/line.html', message='Temporarily Down')
 
         # data, emotion_sents, score, line_sentiment, text, length = processing_results(text)
 
-        return render_template('projects/doc.html', data=[data, emotion_sents, score, zip(text, line_sentiment), length])
+        #return render_template('projects/doc.html', data=[data, emotion_sents, score, zip(text, line_sentiment), length])
+        return render_template('projects/line.html', message='Temporarily Down')
     else:
-        return render_template('projects/doc.html')
+        #return render_template('projects/doc.html')
+        return render_template('projects/line.html', message='Temporarily Down')

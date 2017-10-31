@@ -13,6 +13,8 @@ def liner():
             return render_template('projects/line.html', message='Please separate each line with "."')
 
         # data, emotion_sents, score, line_sentiment, text, length = processing_results(text)
-        return render_template('projects/line.html', data=[data, emotion_sents, score, zip(text, line_sentiment), length])
+        # return render_template('projects/line.html', data=[data, emotion_sents, score, zip(text, line_sentiment), length])
+        return render_template('projects/line.html', message='Temporarily Down')
     else:
-        return render_template('projects/line.html')
+        # return render_template('projects/line.html')
+        return render_template('projects/line.html', message='Temporarily Down')

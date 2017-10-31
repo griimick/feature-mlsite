@@ -7,7 +7,9 @@ from .feature.views import feature_mod
 from .team.views import team_mod
 import os
 
+UPLOAD_FOLDER = './uploads/'
 app = Flask(__name__, static_folder='static')
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 app.register_blueprint(home_mod)
