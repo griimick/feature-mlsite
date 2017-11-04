@@ -8,6 +8,19 @@ body {
 
 
 /* index/home.html */
+.vertical-bar {
+    width: 80%;
+    text-align: center;
+    padding: 50px;
+}
+
+.content-bar {
+    padding: 10px;
+}
+
+.home-area {
+    display: inline-flex;
+}
 
 .front-page {
     text-align: center;
