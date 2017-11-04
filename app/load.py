@@ -12,8 +12,8 @@ import gc
 
 session = boto3.session.Session(region_name='ap-south-1')
 s3client = session.client('s3', config=boto3.session.Config(signature_version='s3v4', region_name='ap-south-1'),
-                          aws_access_key_id='AKIAJ7WLIGYDSJ3FDY2A',
-                          aws_secret_access_key='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')
+                          aws_access_key_id='**',
+                          aws_secret_access_key='**+T')
 
 
 def most_common(lst):
@@ -32,8 +32,14 @@ def load_from_s3(str):
     return detector
 
 
-word2index = load_from_s3('models/word2index.pkl')
-vectorizer = load_from_s3('models/vectorizer.pkl')
+def load_offline(str):
+    with open(str, 'rb') as f:
+        dump = _pickle.load(f)
+    return dump
+
+
+word2index = load_offline('app/static/models/word2index.pkl')
+vectorizer = load_offline('app/static/models/vectorizer.pkl')
 
 
 def init_model():
@@ -46,23 +52,21 @@ def init_model():
 
 
 lmodel, cnn, graph = init_model()
-logistic = load_from_s3('models/logisticreg.pkl')
-adaboost = load_from_s3('models/adaboost.pkl')
-bernoulli = load_from_s3('models/bernoullinb.pkl')
-decisiontree = load_from_s3('models/decisiontree.pkl')
-gradientboost = load_from_s3('models/gradientboost.pkl')
-knn = load_from_s3('models/knn.pkl')
-randomforest = load_from_s3('models/randomforest.pkl')
-multinomialnb = load_from_s3('models/multinomialnb.pkl')
-svm10 = load_from_s3('models/svm10.pkl')
+logistic = load_offline('app/static/models/logisticreg.pkl')
+adaboost = load_offline('app/static/models/adaboost.pkl')
+bernoulli = load_offline('app/static/models/bernoullinb.pkl')
+decisiontree = load_offline('app/static/models/decisiontree.pkl')
+gradientboost = load_offline('app/static/models/gradientboost.pkl')
+knn = load_offline('app/static/models/knn.pkl')
+randomforest = load_offline('app/static/models/randomforest.pkl')
+multinomialnb = load_offline('app/static/models/multinomialnb.pkl')
+svm10 = load_offline('app/static/models/svm10.pkl')
 
 auth = tweepy.OAuthHandler('hXJ8TwQzVya3yYwQN1GNvGNNp', 'diX9CFVOOfWNli2KTAYY13vZVJgw1sYlEeOTxsLsEb2x73oI8S')
 auth.set_access_token('2155329456-53H1M9QKqlQbEkLExgVgkeallweZ9N74Aigm9Kh',
                       'waDPwamuPkYHFLdVNZ5YF2SNWuYfGHDVFue6bEbEGjTZb')
 
 api = tweepy.API(auth)
-
-print('load is executing')
 
 
 def clean(query):

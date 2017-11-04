@@ -1,5 +1,5 @@
 from flask import Blueprint, request, render_template
-# from ..load import processing_results
+from ..load import processing_results
 
 liner_mod = Blueprint('liner', __name__, template_folder='templates', static_folder='static')
 
@@ -12,9 +12,7 @@ def liner():
         if len(text) == 0:
             return render_template('projects/line.html', message='Please separate each line with "."')
 
-        # data, emotion_sents, score, line_sentiment, text, length = processing_results(text)
-        # return render_template('projects/line.html', data=[data, emotion_sents, score, zip(text, line_sentiment), length])
-        return render_template('projects/line.html', message='Temporarily Down')
+        data, emotion_sents, score, line_sentiment, text, length = processing_results(text)
+        return render_template('projects/line.html', data=[data, emotion_sents, score, zip(text, line_sentiment), length])
     else:
-        # return render_template('projects/line.html')
-        return render_template('projects/line.html', message='Temporarily Down')
+        return render_template('projects/line.html')
