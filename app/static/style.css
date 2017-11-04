@@ -21,7 +21,7 @@ body {
 .home-area {
     display: inline-flex;
     text-align: center;
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
     padding: 10px;
 }
