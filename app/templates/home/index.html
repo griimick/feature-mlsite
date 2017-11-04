@@ -1,35 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="front-page">
-<<<<<<< HEAD
+    <div class="container home-area">
+    <div class="vertical-bar">
+            <img src="{{ url_for('static', filename='front2.jpg') }}">
+        </div>
+        <div class="content-bar">
     <h3> <b>WELCOME</b></h3>
-    <h3> <b>TO</b></h3>
-        <h2> <b>Hindi Sentiment Analysis System</b></h2>
-        <p>Sentiment Analysis (SA) is a natural language processing task that uses the computational approach to extract the opinionated content and classifies it as positive, negative or neutral. Generally, sentiment analysis can be performed at three levels, i.e., document, sentence and aspect level.</p>
-            <br>
-            <h4>Sentence Level analysis</h4>
-            <p>It determines whether each sentence expressed a positive, negative, or neutral opinion.</p>
-            <br>
-            <h4>Document Level analysis</h4>
-            <p>Document level considers that a document is an opinion on an entity or aspect of it.
-                The task is to classify whether a whole opinion document expresses a positive or negative sentiment.
-                For example, given a product review, the system determines whether the review expresses an overall positive or negative opinion about the product.</p>
-            <br>
-            <h4>Twitter Ananlysis</h4>
-            <p>e mauris. Aliquam varius eleifend odio ac suscipit. Integer eu libero sed odio varius mattis. Aliquam hendrerit sagittis dolor, at finibus est tincidunt accumsan. Nullam congue purus id turpis consequat, quis varius nunc ornare.</p>
-            <br>
-            <h4>Aspect Level Ananlysis</h4>
-        <p>Aspect-based sentiment analysis helps to capture nuances about the objects of interest. As sometimes sentences may consist of different sentiments associated to different aspects of an entity and overall polarity of the sentence does not help to identify the absolute opinion of the writer. For example, consider the sentence, “The story of the movie is weak but music is good”. This sentence consists of negative (i.e., “weak”) and positive (i.e., “good”) sentiments about aspects “story” and “music”, respectively. </p>
-=======
-        <h3> <b>WELCOME</b></h3>
         <h3> <b>TO</b></h3>
         <h2> <b>Hindi Sentiment Analysis System</b></h2>
         <br>
+        <img src="{{ url_for('static', filename='front1.jpg') }}">
         <p>is a web-based sentiment analysis system which performs analysis at aspect, sentence and document level.</p>
->>>>>>> master
         <br>
         <a href="{{ url_for('feature.feature') }}">
             <button type="button" class="btn btn-primary">Experience us now</button>
         </a>
+        </div>
+        <div class="vertical-bar">
+            <img src="{{ url_for('static', filename='front3.jpg') }}">
+        </div>
     </div>
 {% endblock %}
