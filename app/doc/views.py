@@ -39,7 +39,11 @@ def doc():
             data, emotion_sents, score, line_sentiment, text, length = processing_results(text)
 
             return render_template('projects/doc.html', data=[data, emotion_sents, score, zip(text, line_sentiment), length])
+        except UnicodeDecodeError:
+            flash('Only UTF Encoded Files supported. Please try again.')
+            return render_template('projects/doc.html')
         except Exception:
-            return render_template('projects/doc.html', message='Something went wrong. Please try again.')
+            flash('Something went wrong. Please try again.')
+            return render_template('projects/doc.html')
     else:
         return render_template('projects/doc.html')
