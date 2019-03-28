@@ -7,9 +7,17 @@
                 <input type="file" name="file" id="upload">
                 <input type="submit" value="Upload" class="btn btn-primary">
             </form>
-            {% if message %}
-                <div class="alert alert-danger warning">{{ message }}</div>
-            {% endif %}
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+			<ul class="flashes">
+				{% for message in messages %}
+					{% if message %}
+						<div class="alert alert-danger warning">{{ message }}</div>
+					{% endif %}
+				{% endfor %}
+			</ul>
+			{% endif %}
+			{% endwith %}
         </div>
         <div class="col-md-2" style="padding-top: 4%;">
             <ul class="list-group">

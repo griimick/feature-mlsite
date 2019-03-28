@@ -10,6 +10,7 @@ import os
 UPLOAD_FOLDER = './uploads/'
 app = Flask(__name__, static_folder='static')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.secret_key = 'some_secret'
 
 
 app.register_blueprint(home_mod)
