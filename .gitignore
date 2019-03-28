@@ -124,3 +124,4 @@ dmypy.json
 
 #Uplaods dir
 uploads/*
+app/tmp/*
