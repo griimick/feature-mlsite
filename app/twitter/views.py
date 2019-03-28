@@ -24,6 +24,8 @@ def twitter():
                 temp = ''.join(takeout_non_ascii(tweet.text))
                 if not len(temp) in range(3):
                     text.append(temp)
+            if len(text) == 0:
+                return render_template('projects/twitter.html', message='No tweets under this topic. Please enter another topic.')
             data, emotion_sents, score, line_sentiment, text, length = processing_results(text)
             return render_template('projects/twitter.html', data=[data, emotion_sents, score, zip(text, line_sentiment), length])
 
