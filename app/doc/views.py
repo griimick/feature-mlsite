@@ -4,6 +4,10 @@ from werkzeug.utils import secure_filename
 import os
 import gc
 import resource
+from ..abbr import get_abbr_map
+
+
+abbr_map = get_abbr_map()
 
 doc_mod = Blueprint('doc', __name__, template_folder='templates', static_folder='static')
 
@@ -36,9 +40,19 @@ def doc():
             if len(text) == 0:
                 return render_template('projects/doc.html', message='Please separate each line with "." in the file')
 
+            abbr_expanded_text = ""
+            for word in query.split():
+                if word in abbr_map:
+                    abbr_expanded_text += abbr_map[word]
+                else:
+                    abbr_expanded_text += word
+                abbr_expanded_text += " " 
+
+            print(abbr_expanded_text)
+
             data, emotion_sents, score, line_sentiment, text, length = processing_results(text)
 
-            return render_template('projects/doc.html', data=[data, emotion_sents, score, zip(text, line_sentiment), length])
+            return render_template('projects/doc.html', data=[data, emotion_sents, score, zip(text, line_sentiment), length, abbr_expanded_text])
         except UnicodeDecodeError:
             flash('Only UTF Encoded Files supported. Please try again.')
             return render_template('projects/doc.html')

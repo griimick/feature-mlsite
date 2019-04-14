@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="container">
+			{% if data %}
+        <div class="col-md-5">
+			{% else %}
         <div class="col-md-10">
+			{% endif %}
             <h4 class="legend">Please upload the file for sentiment analysis</h4>
             <form method="post" enctype="multipart/form-data" action="{{ url_for('doc.doc') }}">
                 <input type="file" name="file" id="upload">
@@ -19,6 +23,15 @@
 			{% endif %}
 			{% endwith %}
         </div>
+				{% if data %}
+        <div class="col-md-5">
+            <h4 class="legend">Expanded Abbreviations:</h4>
+                    <form id="input-form">
+											<textarea class="form-control" rows="5" cols="100" style="margin-bottom: 20px" name="liner-text" default="">{{ data[5] }}</textarea>
+                        <br>
+            </form>
+            </div>
+					{% endif %}
         <div class="col-md-2" style="padding-top: 4%;">
             <ul class="list-group">
                 <li class="list-group-item">
