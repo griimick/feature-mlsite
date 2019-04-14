@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="container">
-        <div class="col-md-8">
+			{% if abbr %}
+        <div class="col-md-5">
+			{% else %}
+        <div class="col-md-10">
+			{% endif %}
             <h4 class="legend">Please Enter your hindi text for Aspect based Sentiment Analysis</h4>
                     <form id="input-form" action="{{ url_for('feature.feature') }}", method="post">
-                        <textarea class="form-control" rows="5" cols="100" style="margin-bottom: 20px" name="liner-text" default="">{% if queryDoc %}{{queryDoc}}{% else %}फ़ोन का कैमरा अच्छा है पर बैटरी खराब है ।{% endif %}</textarea>
+                        <textarea class="form-control" rows="5" cols="100" style="margin-bottom: 20px; width:100%;" name="liner-text" default="">{% if queryDoc %}{{queryDoc}}{% else %}फ़ोन का कैमरा अच्छा है पर बैटरी खराब है ।{% endif %}</textarea>
                         <br>
                 <input type="submit" value="Predict" class="btn btn-primary">
             </form>
@@ -16,8 +20,17 @@
 
     <script> var s = document.createElement('script'); s.setAttribute('src','http://developer.quillpad.in/static/js/quill.js?lang=Hindi&key=6edf6d6bb1d3eb6e985ad201c287f4a2'); s.setAttribute('id','qpd_script'); document.head.appendChild(s); </script>
 
+				{% if abbr %}
+        <div class="col-md-5">
+            <h4 class="legend">Expanded Abbreviations:</h4>
+                    <form id="input-form">
+											<textarea class="form-control" rows="5" cols="100" disabled style="margin-bottom: 20px" name="liner-text" default="">{{ abbr }}</textarea>
+                        <br>
+            </form>
+            </div>
+					{% endif %}
     {% if datas %}
-    <div class="col-md-4" style="overflow-y:scroll; height:269px">
+    <div class="col-md-2" style="overflow-y:scroll; height:269px">
         <strong><h5>Aspect-Sentiment Relations</h5></strong>
         <ul>
         {% for outputQ in outputs %}
