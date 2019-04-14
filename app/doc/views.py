@@ -6,9 +6,7 @@ import gc
 import resource
 from ..abbr import get_abbr_map
 
-
 abbr_map = get_abbr_map()
-
 doc_mod = Blueprint('doc', __name__, template_folder='templates', static_folder='static')
 
 UPLOAD_FOLDER = './uploads/'
@@ -47,8 +45,6 @@ def doc():
                 else:
                     abbr_expanded_text += word
                 abbr_expanded_text += " " 
-
-            print(abbr_expanded_text)
 
             data, emotion_sents, score, line_sentiment, text, length = processing_results(text)
 

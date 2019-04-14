@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="container">
+			{% if data %}
+        <div class="col-md-5">
+			{% else %}
         <div class="col-md-10">
+			{% endif %}
             <h4 class="legend">Please Enter your hindi text for sentiment analysis</h4>
             <form id="input-form" action="{{ url_for('liner.liner') }}", method="post">
-                <textarea rows="10" cols="100" style="margin-bottom: 20px" name="liner-text"> फ़ोन का कैमरा अच्छा है पर बैटरी खराब है ।.</textarea>
+                <textarea rows="5" cols="100" style="margin-bottom: 20px; width: 100%;" name="liner-text"> फ़ोन का कैमरा अच्छा है पर बैटरी खराब है ।.</textarea>
                 <br>
                 <input type="submit" value="Predict" class="btn btn-primary">
             </form>
@@ -12,6 +16,15 @@
                 <div class="alert alert-danger warning">{{ message }}</div>
             {% endif %}
         </div>
+				{% if data %}
+        <div class="col-md-5">
+            <h4 class="legend">Expanded Abbreviations:</h4>
+                    <form id="input-form">
+											<textarea class="form-control" rows="5" cols="100" disabled style="margin-bottom: 20px" name="liner-text" default="">{{ data[5] }}</textarea>
+                        <br>
+            </form>
+            </div>
+					{% endif %}
         <div class="col-md-2" style="padding-top: 4%;">
             <ul class="list-group">
                 <li class="list-group-item">
